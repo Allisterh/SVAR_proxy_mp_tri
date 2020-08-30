@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1598710034533.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4195803002",
+    "id" : "7845E0BB",
+    "lastKnownWriteTime" : 1598733997,
+    "last_content_update" : 1598733997918,
+    "path" : "~/Research/MasterThesis/Revision/Code/Functions/R/hd.mod.R",
+    "project_path" : "R/hd.mod.R",
+    "properties" : {
+        "cursorPosition" : "129,12",
+        "scrollLine" : "117",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,24 @@
+{
+    "id": "2A1A0F3A",
+    "path": "~/Documents/proxy_simu/Revision/Code/Functions/R/decompose_Xi.R",
+    "project_path": "R/decompose_Xi.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1595938274086.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "cursorPosition": "15,94",
+        "scrollLine": "22"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1597996376,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1597996376,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,74 @@
+# Load functions ----------------------------------------------------------
+rm(list = ls())
+Functions <- devtools::as.package("../Functions")
+devtools::load_all("../Functions")
+library(ggfortify)
+library(gridExtra)
+library(magrittr)
+library(svars)
+library(readr)
+
+#devtools::install_github("ropenscilabs/ochRe")
+library(ochRe)
+
+# Import data -------------------------------------------------------------
+USA_Tri_raw   <- read.csv("../Applications/Data/USA_Tri.csv")
+USA_Tri       <- ts(USA_Tri_raw[,-1], frequency = 4, start = c(floor(USA_Tri_raw$Year[1]), (USA_Tri_raw$Year[1] %% 1) / 0.25 + 1 ))
+#autoplot(USA_Tri, ncol = 1) + theme_bw()
+
+# VAR Spesicifation -------------------------------------------------------
+## lag length
+VARselect(USA_Tri, lag.max = 8)
+var4 <- VAR(USA_Tri, p = 4, type = "const")
+#var4 %>% summary
+#var4 %>% resid %>% t() %>% write.table(file = "NonFundamentalness/resid.txt", col.names = F, row.names = F)
+#apply(USA_Tri, 1, function(x){x-colMeans(USA_Tri)}) %>% t() %>% write.table(file = "NonFundamentalness/dat.txt", col.names = F, row.names = F)
+## LM test for serial correlation
+#serial.test(var4, type = "BG")
+#serial.test(var4, type = "ES")
+
+## detecting structural break
+#set.seed(1234)
+#chow.test(var4, SB = c(1984, 1), frequency = 4, nboot = 2000) %>% summary
+#set.seed(1234)
+#chow.test(var4, SB = c(1979, 3), frequency = 4, nboot = 2000) %>% summary
+
+## Gaussianity test
+#ICtest::FOBIboot(var4 %>% resid, n.boot = 2000, 1) # test against the last 2 components are gaussian: reject
+#ICtest::FOBIboot(var4 %>% resid, n.boot = 2000, 2) # test against the last 1 component is gaussian: reject
+
+#tseries::jarque.bera.test(resid(var4)[,1])
+#tseries::jarque.bera.test(resid(var4)[,2])
+#tseries::jarque.bera.test(resid(var4)[,3])
+
+
+# Identification ----------------------------------------------------------
+## Sign restrictions
+set.seed(1234)
+Signmat     <- matrix(c(1,1,1,-1,1,1,NA,-1,1), nrow = 3, ncol = 3)
+SR          <- get.id.Sign(var4, Iter = 1000, Itermax = Inf, Signmat = Signmat, RHorizont = 0, Normalize = F, Step = 15, MT = T, Ci = 0.68, Plot = T, Hist = F, Epsname =  c("d", "s", "mp"))
+
+## Identification by change in volatility
+set.seed(1234)
+CV          <- id.cv(var4, SB = c(1984, 1), frequency = 4)
+CV          %>% summary
+
+
+## Proxy SVAR
+# Smets-Wouters (2007)
+SW.raw      <- read.csv("../Applications/Data/Instruments/SW.csv")
+SW          <- ts(SW.raw[,-1], frequency = 4, start = c(floor(SW.raw$Year[1]), (SW.raw$Year[1] %% 1) / 0.25 + 1 ))
+IV.SW       <- get.id.iv(var4, instruments = SW, Synchro = T)
+
+Tn = 1966
+T1 = 1979.5
+T2 = 1982.5
+
+x <- CV
+series = 2
+Partial = 3
+Epsname = c("d", "s", "mp")
+Start = Tn
+End = T2
+Freq = 4
+

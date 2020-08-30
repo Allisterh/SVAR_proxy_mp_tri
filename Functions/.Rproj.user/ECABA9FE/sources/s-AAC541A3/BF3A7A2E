@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1595095655560.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BF3A7A2E",
+    "lastKnownWriteTime" : 1594387319,
+    "last_content_update" : 1594387319,
+    "path" : "~/Research/MasterThesis/Revision/Code/Functions/R/get.MBB.fixed.R",
+    "project_path" : "R/get.MBB.fixed.R",
+    "properties" : {
+        "cursorPosition" : "133,24",
+        "scrollLine" : "119"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

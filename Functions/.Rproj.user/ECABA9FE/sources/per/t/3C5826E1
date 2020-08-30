@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1595324773574.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1383605575",
+    "id" : "3C5826E1",
+    "lastKnownWriteTime" : 1593768089,
+    "last_content_update" : 1595324875787,
+    "path" : "~/Research/MasterThesis/Revision/Code/Functions/R/quasi.hd.R",
+    "project_path" : "R/quasi.hd.R",
+    "properties" : {
+        "cursorPosition" : "55,35",
+        "scrollLine" : "25"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

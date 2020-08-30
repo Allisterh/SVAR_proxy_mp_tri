@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1598703023413.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3479537699",
+    "id" : "61268839",
+    "lastKnownWriteTime" : 1603266776,
+    "last_content_update" : 1603266776,
+    "path" : "~/Research/MasterThesis/Revision/Code/Functions/R/decompose_Xi.R",
+    "project_path" : "R/decompose_Xi.R",
+    "properties" : {
+        "cursorPosition" : "83,0",
+        "scrollLine" : "35"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
