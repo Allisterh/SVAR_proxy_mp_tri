@@ -128,6 +128,41 @@ IrF <- function(A_hat, B_hat, horizon){
     return(irfa)
   }
 }
+
+## proxy SVAR
+x <- IV.SW
+
+Varname <- x$Varname
+k <- length(x$Varname)
+A_hat <- t(x$Beta)[,  1 : (x$p * k)]
+
+B_hat <- matrix(x$B, nrow = k, ncol = k)
+horizon <- length(x$epsilon)
+
+# MA coeff
+IR <- IrF(A_hat, B_hat, horizon)
+if(is.null(Epsname)){Epsname <- Varname}
+impulse <- IR[series,,]
+
+## struct shocks
+p <- x$p
+s.time <- x$eps.ts$time
+y <-  ts2df(x$dat, Varname) %>% 
+  dplyr::filter(time >= s.time[1] & time <= s.time[length(s.time)]) %>% 
+  dplyr::select(-1)
+
+s.errors <- x$epsilon
+y_hat <- rep(NA, horizon)
+for (i in 1:horizon) {
+  y_hat[i] <- t(impulse[Partial,1:i]) %*% s.errors[i:1]
+}
+yhat <- data.frame(s.time, y_hat)
+colnames(yhat) <- c("t",
+                    paste("Cumulative effect of ", Epsname[Partial], "shock on ", Varname[series]))
+
+
+
+
 ## sign restriction
 x <- SR
 k <- length(x$Varname)
