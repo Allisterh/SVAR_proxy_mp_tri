@@ -1,4 +1,4 @@
-#' Title
+#' plot function for historical decompostion
 #'
 #' @param x historical decomposition
 #'
