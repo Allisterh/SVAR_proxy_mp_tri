@@ -62,13 +62,15 @@ hd_x_mp <- hd_x_SR_mp %>% left_join(hd_x_dCov_mp, by = "t") %>%
   left_join(hd_x_CV_mp, by = "t") %>% left_join(hd_x_SW_mp, by = "t") %>% 
   left_join(hd_x_SZ_mp, by = "t") %>% left_join(hd_x_RR_mp, by = "t") %>% tidyr::drop_na()
 
-hd_x_mp %<>% dplyr::filter(t >= 1970 & t <= 1985) 
+hd_x_mp %<>% dplyr::filter(t >= 1973 & t <= 1983) 
 
 colnames(hd_x_mp)[-1] <- c("SR", "dCov", "CV", "SW", "SZ", "RR")
 
 hd_x_mp %>% reshape2::melt(id = "t") %>% ggplot(aes(x = t, y = value)) +
   geom_line() + facet_wrap(~variable, ncol = 3) + xlab("") + ylab("") + 
-  theme_bw() + geom_hline(yintercept = 0, color = "red", alpha = 0.5)
+  theme_bw() + geom_hline(yintercept = 0, color = "red", alpha = 0.5) +
+  scale_x_continuous(breaks = seq(hd_x_mp$t[1] %>% ceiling(),hd_x_mp$t[nrow(hd_x_mp)], by = 2)) +  
+  annotate("rect", xmin = recessions_start, xmax = recessions_end, ymin = -Inf, ymax = Inf, alpha = 0.3)
 
 
 
