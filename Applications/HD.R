@@ -55,7 +55,19 @@ hd_pi_mp_plot <- hd_pi_mp %>% ggplot(aes(x = t, y = value)) + facet_wrap(~variab
 
 ggsave("../Plots/hd_pi_mp_pro.pdf", plot = hd_pi_mp_plot, width = 12, height = 6)
 
- # x ----------------------------------------------------------------------
+
+## CV HD
+hd_pi_CV_df <- hd_pi_CV %>% dplyr::filter(t >= 1973 & t <= 1983) %>% dplyr::select(c(1, 4, 5))
+colnames(hd_pi_CV_df)[c(2,3)] <- c("d", "s")
+hd_pi_CV_df %<>% reshape2::melt(id = "t")
+
+hd_pi_CV_plot <- hd_pi_CV_df %>% ggplot(aes(x = t, y = value)) + facet_wrap(~variable, ncol = 1) +
+  theme_bw() + geom_hline(yintercept = 0, color = "red", alpha = 0.5) +
+  scale_x_continuous(breaks = seq(hd_pi_CV_df$t[1] %>% ceiling(),hd_pi_CV_df$t[nrow(hd_pi_CV_df)], by = 2)) +  
+  annotate("rect", xmin = recessions_start, xmax = recessions_end, ymin = -Inf, ymax = Inf, alpha = 0.3) +
+  geom_line() +  xlab("") + ylab("")
+
+# x ----------------------------------------------------------------------
 hd_x_SR <- hd.mod(SR, series = 1, Partial = NULL, Epsname)
 hd_x_SR_mp <- hd.mod(SR, series = 1, Partial = 3, Epsname)
 hd_x_CV <- hd.mod(CV, series = 1, Partial = NULL, Epsname)
