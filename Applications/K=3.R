@@ -214,7 +214,7 @@ ggsave("../Plots/Tri_B_MBB.pdf", plot = IRF_IV, width = 12, height = 8)
 IV.SW_pro.boot %>% plot.my.irf(Partial = 3) + xlab("") + ylab("")
 
 # Correlation of MP shocks ------------------------------------------------
-mp_sr     <- solve(SR$IRF.M[,,1]) %*% t(resid(var4)) %>% t() %>% as.data.frame() %>% select(3)
+mp_sr     <- solve(SR$IRF.MT[,,1]) %*% t(resid(var4)) %>% t() %>% as.data.frame() %>% select(3)
 mp_cv     <- solve(CV$B)          %*% t(resid(var4)) %>% t() %>% as.data.frame() %>% select(3)
 mp_dcov   <- solve(dCov$B)        %*% t(resid(var4)) %>% t() %>% as.data.frame() %>% select(3)
 mp_noniv  <- cbind(mp_sr, mp_cv, mp_dcov); colnames(mp_noniv) <- c("SR", "CV", "dCov")
@@ -248,8 +248,8 @@ MP_shock_plot3 <- ggplot(mp_all_plot3, aes(x = time, y = value, group = variable
   geom_line(aes(linetype = variable, color = variable), size = 0.7) + 
   scale_x_continuous(breaks = seq(mp_all_stand$time[1] %>% ceiling(),mp_all_stand$time[nrow(mp_all_stand)], 2)) + 
   xlab("") + ylab(" ")  + theme_bw() + theme(legend.title = element_blank()) + 
-  geom_hline(yintercept = c(-1, 1), linetype = "dashed", alpha = 0.3) + scale_color_ochre(palette="lorikeet")+ 
-  annotate("rect", xmin = Start, xmax = End2, ymin = -Inf, ymax = Inf, alpha = 0.3) + ylim(-4.5, 4.5)
+  geom_hline(yintercept = c(-1, 1), linetype = "dashed", alpha = 0.3) + scale_color_ochre(palette="lorikeet") 
+  #annotate("rect", xmin = Start, xmax = End2, ymin = -Inf, ymax = Inf, alpha = 0.3) + ylim(-4.5, 4.5)
 MP_shock_plot3
 ggsave("../Plots/MP_shocks3.pdf", plot = MP_shock_plot3, width = 12, height = 4)
 
@@ -263,12 +263,12 @@ MP_shocks_plotSW_Fa <- ggplot(MP_shocks_plotSW_Fa_df_long, aes(x = time, y = val
   geom_line(aes(linetype = variable)) + scale_linetype_manual(values = c("solid","longdash")) +
   scale_x_continuous(breaks = seq(mp_all_stand$time[1] %>% ceiling(),mp_all_stand$time[nrow(mp_all_stand)], 2)) +
   xlab("") + ylab(" ")  + theme_bw()  + geom_hline(yintercept = c(-1, 1), linetype = "dashed", alpha = 0.3) + 
-  annotate("rect", xmin = Start, xmax = End2, ymin = -Inf, ymax = Inf, alpha = 0.3) + 
+  #annotate("rect", xmin = Start, xmax = End2, ymin = -Inf, ymax = Inf, alpha = 0.3) + 
   theme(legend.title = element_blank()) + ylim(-4.5, 4.5)
 
 new_shock_plots <- grid.arrange(MP_shock_plot3, MP_shocks_plotSW_Fa, ncol = 1)
 
-ggsave("../Plots/MP_shocks3_Fa3.pdf", plot = new_shock_plots, width = 12, height = 6)
+ggsave("../Plots/MP_shocks3_Fa3_new.pdf", plot = new_shock_plots, width = 12, height = 6)
 
 
 # Event analysis ----------------------------------------------------------
@@ -356,6 +356,13 @@ supply_cv     <- solve(CV$B)          %*% t(resid(var4)) %>% t() %>% as.data.fra
 supply_cv <- cbind(time(var4$y)[-c(1:4)], supply_cv); colnames(supply_cv) <- c("time", "supply_cv")
 
 non_mp_cv <- left_join(demand_cv, supply_cv, by = "time")
+
+## correlation btw. SR shocks and CV non_MP shocks
+#temp = cbind(mp_sr, non_mp_cv %>% select(-1))
+#colnames(temp)[1] = "SR"
+#cor(temp)
+#lm(SR~demand_cv + supply_cv - 1, data = temp) %>% summary
+
 
 #temp <- left_join(non_mp_cv, SW.ts, by = "time") %>% tidyr::drop_na()
 #SW_pro <- data.frame("time" = temp$time, "SW_pro" =  lm(temp$SW ~ temp[,2:3] %>% as.matrix()-1) %>% resid())
