@@ -1,6 +1,6 @@
-#' quasi historic decomp for a determined period of time
+#' H^2's quasi historic decompo for a determined period of time
 #'
-#' @param x svar or my.id
+#' @param x class of svar or my.id
 #' @param series which series to be decomposed
 #' @param Partial which shock
 #' @param Epsname shock name
@@ -30,8 +30,8 @@ quasi.hd <- function(x, series = 1, Partial = NULL, Epsname = NULL, Start, End, 
     if(p == 1){
       irfa <- array(0, c(k, k, horizon))
       irfa[,,1] <- B_hat
-      for(i in 1:horizon){
-        irfa[,,i] <- (A_hat%^%i)%*%B_hat
+      for(i in 2:horizon){
+        irfa[,,i] <- (A_hat%^%(i-1))%*%B_hat
       }
       return(irfa)
     }else{
