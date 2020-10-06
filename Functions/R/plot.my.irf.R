@@ -56,7 +56,7 @@ plot.my.irf <- function(My.id, Step = NULL, Partial = NULL, Hide.Legend = FALSE,
         #geom_line(aes(y = L), linetype = "dashed", alpha = 0.9) +
         #geom_line(aes(y = U), linetype = "dashed", alpha = 0.9) +
         geom_ribbon(aes(ymin = L, ymax = U), alpha = 0.2) +
-        xlab("Horizont") + ylab("Response") +
+        xlab("Horizon") + ylab("Response") +
         theme_bw()
 
       if (Hide.Legend){

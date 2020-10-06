@@ -8,7 +8,7 @@ Lab   <- c("SR", "CV", "dCov", "CvM", "IV", "IV-W", "IV-E")
 Dist  <- c("L1", "L2a", "L2b", "L3a", "L3b")
 
 # Graphics ----------------------------------------------------------------
-Tobs <- 480
+Tobs <- 240
 for (i in 1:5) {
   aoa_temp <- list()
   for (j in 1:length(IDM)) {
@@ -199,10 +199,14 @@ UMPS_plot$Tob <- UMPS_plot$Tob %>% as.character()
 
 UMPS_plot <- UMPS_plot %>% mutate(Methods = replace(Methods, Methods == "IV-P", "IV-E"))
 
+UMPS_plot$Methods <- factor(  UMPS_plot$Methods, levels = c("IV", "IV-W", "IV-E", "CV", "CvM", "dCov", "SR"))
+
+
 ggplot(data = UMPS_plot, aes(x = Tob, y = value, group = Methods)) + geom_line(aes(linetype = Methods, color = Methods)) +
   geom_point(aes(shape = Methods, color = Methods), size=3) +
   facet_grid(measure~Dist, scales = "free_y", labeller = label_parsed) +
-  xlab(" T ") + ylab(" ")  + theme_bw() + scale_shape_manual(values = c(15:17, 5, 1:3))
+  xlab(" T ") + ylab(" ")  + theme_bw() + scale_shape_manual(values = c(15:17, 5, 1:3)) +
+  scale_shape_manual(values = c(5,1,2, 15:17,3))
 
 ggsave("../Plots/UMPS_all.pdf", plot = last_plot(), width = 12, height = 7)
 
