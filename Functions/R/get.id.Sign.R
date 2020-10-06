@@ -181,7 +181,7 @@ get.id.Sign <- function(Model, Iter, Itermax, Signmat, RHorizont, MT = FALSE, In
           geom_line(aes(y = L), linetype = "dashed", alpha = 0.9) +
           geom_line(aes(y = U), linetype = "dashed", alpha = 0.9) +
           geom_ribbon(aes(ymin = L, ymax = U), alpha = 0.1) +
-          xlab("Horizon") + ylab("Response") +
+          xlab("Horizont") + ylab("Response") +
           theme_bw()
       } else {
         Response.plot.MT <- left_join(Response.MT, Response.Ci, by = c("variable", "h")) %>% add_column(Label = "median target (MT)")
