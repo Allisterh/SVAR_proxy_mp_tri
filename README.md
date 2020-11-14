@@ -1,7 +1,7 @@
 # proxy_mp_tri
  Code for proxy SVAR paper: [**Herwartz, Rohloff and Wang (2020): Proxy SVAR identification of monetary policy shocks - Monte Carlo evidence and insights for the US**](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3714542)
 
-## notes: 
+## Notes: 
 ### Code:
 1. For Monte Carlo Simulation: 
 A complete simulation with full sample size and iteration steps could take a while. 
