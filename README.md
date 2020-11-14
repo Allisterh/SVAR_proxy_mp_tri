@@ -13,8 +13,8 @@ These results are generated on the StatOek3 Server. Server information: 128 CPUs
 The main file is ``Code/Main.R``, which contains most of our calculations such as, inter alia, specifications and diagonastics of reduced-form VAR, identifications of structural VAR, computation of IRFs, boostrap inference.
 Supplement files:
 ``Code/Fa.R`` performs factor-augumented VAR analysis.
-``vHist_decomp.R`` performs historical decompositions.
-``vVolcker.R`` computes the cumulative comtributions of Vocker's monetary policy to disinflation.
+``Code/Hist_decomp.R`` performs historical decompositions.
+``Code/Volcker.R`` computes the cumulative comtributions of Vocker's monetary policy to disinflation.
 ``Code/barplot.R`` plots the cumulative comtributions of Vocker's disinflation as a beautiful barplot.
 Please always run ``Code/Main.R`` first, in order to run other supplement files.
 
