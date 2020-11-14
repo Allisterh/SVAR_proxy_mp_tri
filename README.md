@@ -2,7 +2,6 @@
  Code for proxy SVAR paper: [**Herwartz, Rohloff and Wang (2020): Proxy SVAR identification of monetary policy shocks - Monte Carlo evidence and insights for the US**](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3714542)
 
 ## notes: 
-1. For Monte Carlo simulations: A complete simulation with full sample size and iteration steps could take a while. Please use ``Showcase.R`` to run a small-scale Monte Carlo experiment. For replication of the results, please use ``Extract.R`` to extract the files from the folder ``Server``. These results are generated on the StatOek3 Server.
+1. For Monte Carlo simulations: A complete simulation with full sample size and iteration steps could take a while. Please use ``Showcase.R`` to run a small-scale Monte Carlo experiment. For replication of the results, please use ``Replica.R`` to extract the files from the folder ``Server``. These results are generated on the StatOek3 Server. Server information: 128 CPUs each Intel(R) Xeon(R) CPU E5-4660 v4 @ 2.20GHz.
 2. For application: In order to increase the readability of the code, we did not put ``set.seed`` all over the place. For replication of the results, please use ``set.seed(1234)``. The main file is ``main.R``.
 3. All involved functions are collected in the local package ``Functions``. 
-4. Data (incl. instruments) can befound here ``proxy_mp_tri/Applications/Data/``
