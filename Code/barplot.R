@@ -169,7 +169,7 @@ df_pro %<>% add_column(lab = "old") %>% mutate(lab = ifelse(variable == "SZ_pro"
 df_pro[13:14,]$variable <- "SZ"
 df_pro[15:16,]$variable <- "RR"
 
-df_pro %<>% mutate(value = value/4)
+#df_pro %<>% mutate(value = value/4)
 df_pro %<>% add_column(type = "agg")
 
 
@@ -191,7 +191,7 @@ df_1979Q4 <- data.frame("period" = c("1979Q4 - 1982Q3", "1979Q4 - 1983Q3"),
                         "SZ_pro" = c(Volcker_shock(IV.SZ_pro, End = End1),
                                      Volcker_shock(IV.SZ_pro, End = End2)),
                         "RR_pro" = c(Volcker_shock(IV.RR_pro, End = End1),
-                                     Volcker_shock(IV.RR_pro, End = End2)))  %>% melt(id = c("period")) %>% mutate(value = value * 0.25)
+                                     Volcker_shock(IV.RR_pro, End = End2)))  %>% melt(id = c("period"))# %>% mutate(value = value * 0.25)
 df_1979Q4 %<>% add_column(lab = "old") %>% mutate(lab = ifelse(variable == "SZ_pro" | variable == "RR_pro", "new", "old"))
 df_1979Q4[13:14,]$variable <- "SZ"
 df_1979Q4[15:16,]$variable <- "RR"
