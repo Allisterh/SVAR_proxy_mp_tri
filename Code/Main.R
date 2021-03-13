@@ -384,15 +384,15 @@ Comp3 <- tempdat %>% select(time, supply_cv) %>% mutate(supply_cv = supply_cv*to
 Comp4 <- data.frame("time" = tempdat %>% tidyr::drop_na() %>% select(1), "Comp4" = topmod2 %>% resid) %>% mutate(Comp4 = Comp4*topmod1$coefficients)
 
 # TRUE value
-0.25 *c(quasi.hd(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End1, Freq = 4),
+c(quasi.hd(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End1, Freq = 4),
         quasi.hd(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End2, Freq = 4))
 
-decomp1 <- 0.25 *c(decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End1, Freq = 4, wrong_shocks = Comp1),
+decomp1 <- c(decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End1, Freq = 4, wrong_shocks = Comp1),
         decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End1, Freq = 4, wrong_shocks = Comp2),
         decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End1, Freq = 4, wrong_shocks = Comp3),
         decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End1, Freq = 4, wrong_shocks = Comp4))  %>% t %>% t
 
-decomp2 <- 0.25 *c(decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End2, Freq = 4, wrong_shocks = Comp1),
+decomp2 <- c(decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End2, Freq = 4, wrong_shocks = Comp1),
         decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End2, Freq = 4, wrong_shocks = Comp2),
         decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End2, Freq = 4, wrong_shocks = Comp3),
         decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End2, Freq = 4, wrong_shocks = Comp4))   %>% t %>% t
@@ -409,12 +409,12 @@ Comp6 <- tempdat %>% select(time, demand_cv) %>% mutate(demand_cv = demand_cv*to
 Comp7 <- tempdat %>% select(time, supply_cv) %>% mutate(supply_cv = supply_cv*topmod3$coefficients*topmod4$coefficients[2])
 Comp8 <- data.frame("time" = tempdat %>% tidyr::drop_na() %>% select(1), "Comp8" = topmod4 %>% resid) %>% mutate(Comp8 = Comp8*topmod3$coefficients)
 
-decomp3 <- 0.25 *c(decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End1, Freq = 4, wrong_shocks = Comp5),
+decomp3 <- c(decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End1, Freq = 4, wrong_shocks = Comp5),
                    decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End1, Freq = 4, wrong_shocks = Comp6),
                    decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End1, Freq = 4, wrong_shocks = Comp7),
                    decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End1, Freq = 4, wrong_shocks = Comp8))  %>% t %>% t
 
-decomp4 <- 0.25 *c(decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End2, Freq = 4, wrong_shocks = Comp5),
+decomp4 <- c(decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End2, Freq = 4, wrong_shocks = Comp5),
                    decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End2, Freq = 4, wrong_shocks = Comp6),
                    decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End2, Freq = 4, wrong_shocks = Comp7),
                    decompose_Xi(IV.SW, series = 2, Partial = 3, Epsname = c("d", "s", "mp", "f"), Start = Start, End = End2, Freq = 4, wrong_shocks = Comp8))   %>% t %>% t

@@ -24,22 +24,22 @@ Volcker.fct <- function(x, series = 2, Par = NULL, Epsname = c("d", "s", "mp"), 
 
 # Pi ----------------------------------------------------------------------
 # CV 
-pi_RefA_CV <- Volcker.fct(CV, series = 2, Start = Start, End = End1) * 0.25
-pi_RefB_CV <- Volcker.fct(CV, series = 2, Start = Start, End = End2) * 0.25
-pi_anteA_CV <- Volcker.fct(CV, series = 2, Start = T0A, End = Start- 0.25) * 0.25
-pi_anteB_CV <- Volcker.fct(CV, series = 2, Start = T0B, End = Start- 0.25) * 0.25
-pi_anteC_CV <- Volcker.fct(CV, series = 2, Start = T0C, End = T0A- 0.25) * 0.25
-pi_postA_CV <- Volcker.fct(CV, series = 2, Start = End1+ 0.25, End = TTA) * 0.25
-pi_postB_CV <- Volcker.fct(CV, series = 2, Start = End2+ 0.25, End = TTB) * 0.25
+pi_RefA_CV <- Volcker.fct(CV, series = 2, Start = Start, End = End1) #* 0.25
+pi_RefB_CV <- Volcker.fct(CV, series = 2, Start = Start, End = End2) #* 0.25
+pi_anteA_CV <- Volcker.fct(CV, series = 2, Start = T0A, End = Start- 0.25) #* 0.25
+pi_anteB_CV <- Volcker.fct(CV, series = 2, Start = T0B, End = Start- 0.25) #* 0.25
+pi_anteC_CV <- Volcker.fct(CV, series = 2, Start = T0C, End = T0A- 0.25) #* 0.25
+pi_postA_CV <- Volcker.fct(CV, series = 2, Start = End1+ 0.25, End = TTA) #* 0.25
+pi_postB_CV <- Volcker.fct(CV, series = 2, Start = End2+ 0.25, End = TTB) #* 0.25
 
 # SW
-pi_RefA_SW <- Volcker.fct(IV.SW, Par = 3, Start = Start, End = End1) * 0.25
-pi_RefB_SW <- Volcker.fct(IV.SW, Par = 3, Start = Start, End = End2) * 0.25
-pi_anteA_SW <- Volcker.fct(IV.SW, Par = 3, Start = T0A, End = Start- 0.25) * 0.25
-pi_anteB_SW <- Volcker.fct(IV.SW, Par = 3, Start = T0B, End = Start- 0.25) * 0.25
-pi_anteC_SW <- Volcker.fct(IV.SW, Par = 3, Start = T0C, End = T0A- 0.25) * 0.25
-pi_postA_SW <- Volcker.fct(IV.SW, Par = 3, Start = End1+ 0.25, End = TTA) * 0.25
-pi_postB_SW <- Volcker.fct(IV.SW, Par = 3, Start = End2+ 0.25, End = TTB) * 0.25
+pi_RefA_SW <- Volcker.fct(IV.SW, Par = 3, Start = Start, End = End1) #* 0.25
+pi_RefB_SW <- Volcker.fct(IV.SW, Par = 3, Start = Start, End = End2) #* 0.25
+pi_anteA_SW <- Volcker.fct(IV.SW, Par = 3, Start = T0A, End = Start- 0.25) #* 0.25
+pi_anteB_SW <- Volcker.fct(IV.SW, Par = 3, Start = T0B, End = Start- 0.25) #* 0.25
+pi_anteC_SW <- Volcker.fct(IV.SW, Par = 3, Start = T0C, End = T0A- 0.25) #* 0.25
+pi_postA_SW <- Volcker.fct(IV.SW, Par = 3, Start = End1+ 0.25, End = TTA) #* 0.25
+pi_postB_SW <- Volcker.fct(IV.SW, Par = 3, Start = End2+ 0.25, End = TTB) #* 0.25
 
 
 # output ------------------------------------------------------------------
